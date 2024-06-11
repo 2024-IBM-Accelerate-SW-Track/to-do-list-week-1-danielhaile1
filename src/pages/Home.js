@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import AddTodo from "../component/AddTodo";
+import Todos from "../component/todos";
+import "./Home.css";
 
 class Home extends Component {
   // A default state of this component with an empty list of todos.
@@ -6,6 +9,7 @@ class Home extends Component {
     super();
     this.state = {
       // create your empty list here call it todos.
+      todo: [],
     };
   }
   // the addTodo function simply creates a new array that includes the user submitted todo item and then
@@ -17,6 +21,7 @@ class Home extends Component {
     // This solution works for a small application but a more complex hashing function should be used when
     // dealing with a larger data sensitive project.
     todo.id = Math.random();
+
     // An array that contains the current array and the new todo item
     let new_list = [...this.state.todos, todo];
     // Updates the local state with the new array.
@@ -24,11 +29,16 @@ class Home extends Component {
       todos: new_list,
     });
   };
+
+
+
   render() {
     return (
       <div className="Home">
-        <p> Replace this</p>
+        <p> Greetings! You list of ToDo items are below!</p>
         <h1>Todo's </h1>
+        <Todos todo = {this.state.todos} />
+        <AddTodo addTodo = {this.addTodo} />
       </div>
     );
   }
